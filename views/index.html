@@ -38,15 +38,5 @@
         <a href="https://cjszczechowicz.com" id="website-link" target='_blank'>Chris Szczechowicz</a>
       </div>
     </div>
-    <script>
-      const exerciseForm = document.getElementById("exercise-form");
-
-      exerciseForm.addEventListener("submit", () => {
-        const userId = document.getElementById("uid").value;
-        exerciseForm.action = `/api/users/${userId}/exercises`;
-
-        exerciseForm.submit();
-      });
-    </script>
   </body>
 </html>
