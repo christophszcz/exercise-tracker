@@ -9,8 +9,12 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/api/exercise/new-user', function(req, res) {
-  res.json({ username: 'test' });
+app.post('/api/users', function(req, res) {
+  const { username } = req.body;
+  res.json({
+    username: username,
+    _id: "5fb5853f734231456ccb3b00"
+  });
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
