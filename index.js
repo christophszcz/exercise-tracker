@@ -3,18 +3,27 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 
+let idValue = 0;
+
 app.use(cors());
 app.use(express.static('public'));
+
+// Parse JSON bodies
+app.use(express.json());
+app.use(express.urlencoded());
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
 app.post('/api/users', function(req, res) {
-  const { username } = req.body;
-  res.json({
-    username: username,
-    _id: "5fb5853f734231456ccb3b00"
-  });
+  const urlResponse = { username: undefined, _id: undefined };
+  const username = req.body.username;
+  const id = idValue++;
+
+  urlResponse.username = username;
+  urlResponse._id = id;
+  res.json(urlResponse);
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
