@@ -35,6 +35,17 @@ app.get('/api/users', (req, res) => {
   res.json(users);
 });
 
+app.post('/api/users/:_id/exercises', (req, res) => {
+  const urlResponse = {
+    _id: undefined,
+    description: undefined,
+    duration: undefined,
+    date: undefined
+  };
+
+  res.json(urlResponse);
+});
+
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is here: ' + `http://localhost:${listener.address().port}`);
 })
