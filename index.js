@@ -3,6 +3,9 @@ const app = express();
 const cors = require('cors');
 require('dotenv').config();
 
+// prettify the json responses
+app.set('json spaces', 2);
+
 let idValue = 0;
 let users = [];
 
