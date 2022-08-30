@@ -7,6 +7,7 @@ require('dotenv').config();
 app.set('json spaces', 2);
 
 let idValue = 0;
+let exerciseId = 0;
 let users = [];
 
 app.use(cors());
@@ -36,11 +37,15 @@ app.get('/api/users', (req, res) => {
 });
 
 app.post('/api/users/:_id/exercises', (req, res) => {
+  const description = req.body.description;
+  const duration = req.body.duration;
+  const date = req.body.date;
+
   const urlResponse = {
-    _id: undefined,
-    description: undefined,
-    duration: undefined,
-    date: undefined
+    _id: exerciseId,
+    description: description,
+    duration: duration,
+    date: date
   };
 
   res.json(urlResponse);
