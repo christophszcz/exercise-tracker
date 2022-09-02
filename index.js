@@ -39,7 +39,14 @@ app.post('/api/users/:_id/exercises', (req, res) => {
   const userId = req.params._id;
   const description = req.body.description;
   const duration = req.body.duration;
-  const date = req.body.date ? new Date() : new Date(req.body.date);
+  let date = req.body.date;
+
+  if (!req.params.date) {
+    const currentDate = new Date();
+    date = currentDate.toUTCString();
+  } else {
+    date = new Date(req.body.date);
+  }
 
   const urlResponse = {
     _id: userId,
